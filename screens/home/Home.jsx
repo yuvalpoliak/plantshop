@@ -1,5 +1,5 @@
 import React, {useState, createContext} from 'react'
-import { View, Text, SafeAreaView, TextInput, Alert, TouchableOpacity } from 'react-native'
+import { View, Text, SafeAreaView, TextInput, Modal as RNModal, TouchableOpacity } from 'react-native'
 import { homeStyle } from './homeStyle'
 import { Ionicons, MaterialIcons } from '@expo/vector-icons'; 
 import colors from '../../colorpallete';
@@ -7,8 +7,9 @@ import CategoryList from '../../components/categoryList/CategoryList';
 import PlantsGrid from '../../components/plantsGrid/plantsGrid';
 import Cart from '../cart/Cart';
 import Snack from '../../components/snackbar/Snack';
-import { Dialog, Portal, Provider, ToggleButton, RadioButton, Button } from 'react-native-paper';
+import { Dialog, Portal, Modal, Provider } from 'react-native-paper';
 import TopBar from '../../components/topBar/TopBar';
+import DialogComp from '../../components/dialog/Dialog';
 
 /*
 how to divide the app: 
@@ -23,9 +24,10 @@ how to divide the app:
   const [input, setInput] = useState('')
   const [dialogVisible, setDialogVisible] = useState(false)
   return (
-    
-    <SafeAreaView style={homeStyle.container}>
     <Provider>
+    <SafeAreaView style={homeStyle.container}>
+    
+    
     <TopBar/>
     <View style={homeStyle.header}>
     <View>
@@ -53,13 +55,15 @@ how to divide the app:
       </View>
       </TouchableOpacity>
     </View>
-    <Dialog visible={dialogVisible} setVisible={setDialogVisible}/>
+    <Portal>
+    <DialogComp dialogVisible={dialogVisible} setDialogVisible={setDialogVisible}/>
+    </Portal>
     <CategoryList/>
     <PlantsGrid input={input}/>
     <Snack/>
-    </Provider>
-    </SafeAreaView>
     
+    </SafeAreaView>
+    </Provider>
   )
 }
 export default Home;
