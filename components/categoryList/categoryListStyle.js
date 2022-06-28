@@ -18,5 +18,6 @@ export const categoryListStyle = StyleSheet.create({
         color: colors.green,
         borderBottomWidth: 2, 
         borderBottomColor: colors.green,
+        
     }
 })

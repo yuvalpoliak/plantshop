@@ -3,9 +3,15 @@ import { View, Text, FlatList } from 'react-native';
 import plants from '../../plantsData';
 import PlantsCard from '../plantsCard/PlantsCard';
 import { plantsCardStyle } from '../plantsCard/plantsCardStyle';
+import { categories } from '../../plantsData';
+import { useSelector } from 'react-redux';
 
 const PlantsGrid = ({input}) => {
-  const filteredData = plants.filter((entireList)=> {
+  const category = useSelector((state) => state.category.value)
+  const categoryData = categories[category].content;
+  
+  
+  const filteredData = categoryData.filter((entireList)=> {
     if(input === '') {
       return entireList
     }
@@ -14,6 +20,8 @@ const PlantsGrid = ({input}) => {
     }
   })
 
+        
+        
   return (
     <FlatList
     contentContainerStyle={plantsCardStyle.container}

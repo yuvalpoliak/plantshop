@@ -14,6 +14,7 @@ export default function App() {
 
   return (
     <Provider store={store}>
+    <SafeAreaView style={{flex: 1}}>
     <NavigationContainer>
       <StatusBar style='dark' backgroundColor='white'/>
       <PaperTheme>
@@ -27,6 +28,7 @@ export default function App() {
       </Stack.Navigator>
       </PaperTheme>
     </NavigationContainer>
+    </SafeAreaView>
     </Provider>
   );
 }

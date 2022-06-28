@@ -1,11 +1,12 @@
-import { StyleSheet } from "react-native"
+import { StyleSheet, Platform } from "react-native"
 import colors from "../../colorpallete"
 
 export const homeStyle = StyleSheet.create({
     container: {
         flex: 1,
         paddingHorizontal: 20,
-        backgroundColor: colors.white
+        backgroundColor: colors.white,
+
     },
     header: {
         flexDirection: 'row',
@@ -50,5 +51,6 @@ export const homeStyle = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
         borderRadius: 10,
-    }
+    },
+    
 })
